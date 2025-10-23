@@ -1,3 +1,5 @@
+import { script } from "framer-motion/client";
+
  document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
   const menuBtn = document.getElementById('menu-btn');
@@ -89,3 +91,4 @@ tailwind.config = {
     },
   },
 };
+

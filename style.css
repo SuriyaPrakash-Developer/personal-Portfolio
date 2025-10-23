@@ -1,10 +1,9 @@
+
 :where([class^="ri-"])::before { content: "\f3c2"; }
 body {
 font-family: 'Poppins', sans-serif;
+
 scroll-behavior: smooth;
-
-
-
 object-fit: cover;
 }
 .nav-link {
@@ -187,5 +186,103 @@ transform: translateY(0);
     .scroll-container {
       overflow: hidden;
     }
+
+        
+          /* Section reveal & staggered child animations */
+          .section {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .8s ease, transform .8s ease;
+          }
+          .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          .fade-in {
+            --delay: 0s;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity .6s var(--delay) ease, transform .6s var(--delay) ease;
+          }
+          .section.visible .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          /* Hamburger animation */
+          .hamburger {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 24px;
+            height: 28px;
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+          }
+          .hamburger span {
+            display: block;
+            height: 3px;
+            background: #111827; /* dark gray */
+            border-radius: 3px;
+            transition: transform .28s ease, opacity .18s ease;
+          }
+          .hamburger.open .hamburger-top {
+             transform: rotate(45deg) translateY(2px);
+          }
+          .hamburger.open .hamburger-middle {
+            opacity: 0;
+           
+          }
+          .hamburger.open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(-2px);
+          }
+
+          /* Mobile menu transition */
+          .mobile-menu {
+            transform: translateY(-6px);
+            transition: opacity .25s ease, transform .25s ease;
+          }
+          .mobile-menu.active {
+            opacity: 8;
+            pointer-events: auto;
+            transform: translateY(0);
+          }
+
+          /* Profile image entrance */
+          .profile-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: .5rem;
+            transform: translateY(8px) scale(.99);
+            filter: grayscale(.06) blur(.2px);
+            transition: transform .6s ease, filter .6s ease;
+          }
+          .section.visible .profile-image img {
+            transform: translateY(0) scale(1);
+            filter: none;
+          }
+
+          /* Project card hover */
+          .projects .p-3 {
+            transition: transform .22s ease, box-shadow .22s ease;
+          }
+          .projects .p-3:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+          }
+
+          /* small utility for delayed children (keeps layout stable) */
+          [style*="--delay"] { will-change: transform, opacity; }
+        
+
+  
+      
+
+
+    
 
     
